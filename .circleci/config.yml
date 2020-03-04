@@ -34,7 +34,7 @@ jobs:
           command: yarn install
       - run:
           name: Setup AWS Profile Permissions
-          command: sls config credentials --provider aws --key $SERVERLESS_KEY_ID --secret $SERVERLESS_KEY_SECRET
+          command: sls config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
       - run:
           name: Deploy
           command: sls deploy
