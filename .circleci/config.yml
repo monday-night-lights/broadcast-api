@@ -47,6 +47,10 @@ workflows:
           type: approval
           requires:
            - build
+          filters:
+          branches:
+              only:
+              - master
       - deploy:
           context: AWS
           requires:
