@@ -1,6 +1,6 @@
 'use strict';
 
-get = async event => {
+const get = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify(
@@ -18,7 +18,7 @@ get = async event => {
   // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
 
-update = async event => {
+const update = async event => {
     return {
       statusCode: 200,
       body: JSON.stringify(
