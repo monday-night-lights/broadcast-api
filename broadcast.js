@@ -11,6 +11,7 @@ get = async event => {
       null,
       2
     ),
+    "headers": {}
   };
 
   // Use this code if you don't use the http event with the LAMBDA-PROXY integration
@@ -28,6 +29,7 @@ update = async event => {
         null,
         2
       ),
+      "headers": {}
     };
   
     // Use this code if you don't use the http event with the LAMBDA-PROXY integration
