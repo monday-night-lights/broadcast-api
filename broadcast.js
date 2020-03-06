@@ -3,16 +3,13 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 
-let uuid = new uuid();
-uuid = "f33d68d4-2f33-4edf-ab80-6d58ab243f5f";
-
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 const get = async event => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
-      id: uuid,
+      id: event.pathParameters.id,
     },
   };
 
@@ -44,14 +41,38 @@ const get = async event => {
 
 const update = async event => {
 
-  const data = JSON.parse(event.body);
-  data["id"] = uuid;
+const params = {
+  TableName: process.env.DYNAMODB_TABLE,
+  Key: {
+      id: event.pathParameters.id,
+  },
+  // ExpressionAttributeNames: {
+  //     '#todo_text': 'text',
+  // },
+  ExpressionAttributeValues: {
+      ':name': data.gameStartTime,
+      ':longName': data.longName,
+      ':primaryColor': primaryColor,
+      ':secondaryColor': secondaryColor
+  },
+  UpdateExpression: 'SET name = :name, longName = :longName, primaryColor = :primaryColor, secondaryColor = :secondaryColor',
+  ReturnValues: 'ALL_NEW',
+};
 
-  const params = {
-    TableName: process.env.DYNAMODB_TABLE,
-    Item: data
-  };
+// update the todo in the database
+dynamoDb.update(params, (error, result) => {
+  // handle potential errors
+  if (error) {
+      console.error(error);
+      callback(null, {
+          statusCode: error.statusCode || 501,
+          headers: { 'Content-Type': 'text/plain' },
+          body: 'Couldn\'t fetch the team.',
+      });
+      return;
+  }
 
+  
   // write the team to the database
   dynamoDb.put(params, (error) => {
     // handle potential errors
