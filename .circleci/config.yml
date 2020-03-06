@@ -55,7 +55,7 @@ workflows:
           context: AWS
           requires:
             - hold
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
