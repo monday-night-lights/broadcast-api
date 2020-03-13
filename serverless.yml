@@ -75,11 +75,18 @@ functions:
     handler: broadcast.get
     events:
       - http:
-          path: broadcast
+          path: broadcast/{id}
           method: get
           cors: true
   update:
     handler: broadcast.update
+    events:
+      - http:
+          path: broadcast/{id}
+          method: put
+          cors: true  
+  create:
+    handler: broadcast.create
     events:
       - http:
           path: broadcast
