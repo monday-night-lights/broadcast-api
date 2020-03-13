@@ -27,12 +27,11 @@ const get = async event => {
       };
     }
 
+    console.log(result);
+    
     return {
       statusCode: 200,
-      body: JSON.stringify(result,
-        null,
-        2
-      ),
+      body: JSON.stringify(result.Item),
       "headers": {}
     };
   });
@@ -95,15 +94,11 @@ const create = async event => {
       };
     }
 
+    console.log(result);
+
     return {
       statusCode: 200,
-      body: JSON.stringify(
-        {
-          input: event
-        },
-        null,
-        2
-      ),
+      body: JSON.stringify(result.Item),
       "headers": {}
     };
 
@@ -170,15 +165,11 @@ const update = async event => {
       };
     }
 
+    console.log(result);
+
     return {
       statusCode: 200,
-      body: JSON.stringify(
-        {
-          input: event
-        },
-        null,
-        2
-      ),
+      body: JSON.stringify(result.Item),
       "headers": {}
     };
 
