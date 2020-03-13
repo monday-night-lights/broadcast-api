@@ -11,7 +11,7 @@ const get = async event => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
-      id: event.pathParameters.id,
+      id: event.queryStringParameters.id,
     },
   };
 
@@ -120,7 +120,7 @@ const update = async event => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
-      id: event.pathParameters.id,
+      id: event.queryStringParameters.id,
     },
     // ExpressionAttributeNames: {
     //     '#todo_text': 'text',
