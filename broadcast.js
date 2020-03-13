@@ -39,7 +39,7 @@ const get = async event => {
 
 const create = async event => {
 
-  const data = event.body;
+  const data = JSON.parse(event.body);
 
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
@@ -107,7 +107,7 @@ const create = async event => {
 
 const update = async event => {
 
-  const data = event.body;
+  const data = JSON.parse(event.body);
 
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
