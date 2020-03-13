@@ -5,6 +5,9 @@ const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-depe
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 const get = async event => {
+  
+  console.log(event);
+
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
@@ -39,10 +42,14 @@ const get = async event => {
 
 const create = async event => {
 
+  console.log(event);
   const data = JSON.parse(event.body);
-
+  
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
+    Item: {
+
+    },
     ExpressionAttributeValues: {
       ':period': data.period,
       ':time': data.time,
@@ -107,6 +114,7 @@ const create = async event => {
 
 const update = async event => {
 
+  console.log(event);
   const data = JSON.parse(event.body);
 
   const params = {
