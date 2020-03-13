@@ -29,15 +29,15 @@ provider:
   region: us-east-2
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-        - dynamodb:Scan
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+          - dynamodb:Scan
+          - dynamodb:GetItem
+          - dynamodb:PutItem
+          - dynamodb:UpdateItem
+          - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 #  apiKeys: 
 #    - jeremy-key
@@ -72,21 +72,21 @@ provider:
 
 functions:
   get:
-    handler: broadcast.get
+    handler: broadcast/get.get
     events:
       - http:
           path: broadcast/{id}
           method: get
           cors: true
   update:
-    handler: broadcast.update
+    handler: broadcast/update.update
     events:
       - http:
           path: broadcast/{id}
           method: put
           cors: true  
   create:
-    handler: broadcast.create
+    handler: broadcast/create.create
     events:
       - http:
           path: broadcast
