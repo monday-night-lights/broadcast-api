@@ -27,8 +27,11 @@ module.exports.create = (event, context, callback) => {
             console.error(error);
             callback(null, {
                 statusCode: error.statusCode || 501,
-                headers: { 'Content-Type': 'text/plain' },
-                body: 'Couldn\'t create the broadcast item.',
+                headers: {
+                    'Content-Type': 'text/plain',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true,
+                }, body: 'Couldn\'t create the broadcast item.',
             });
             return;
         }
