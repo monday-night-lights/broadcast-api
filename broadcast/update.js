@@ -50,7 +50,7 @@ module.exports.update = (event, context, callback) => {
     UpdateExpression: "set period=:period, #timeleft=:timeleft, " +
       "#homeTeamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
       "#awayTeamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
-      "#playByPlayName=:playname, playByplaytitle=:playtitle, playByplaysubtitle=:playsubtitle, " +
+      "#playByPlayName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
       "#colorCommentaryName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
       "#fieldReporterName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updatedate=:updated",
     ReturnValues: 'ALL_NEW'
