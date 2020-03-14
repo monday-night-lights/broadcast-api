@@ -13,7 +13,7 @@ module.exports.update = (event, context, callback) => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
-      id: event.queryStringParameters.id,
+      id: event.pathParameters.id,
     },
     // ExpressionAttributeNames: {
     //     '#period':          'text',
