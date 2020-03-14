@@ -15,29 +15,9 @@ module.exports.update = (event, context, callback) => {
     Key: {
       id: event.pathParameters.id,
     },
-    // ExpressionAttributeNames: {
-    //     '#period':          'text',
-    //     '#time':            'text',
-    //     '#homename':       'text',
-    //     '#homelogo':       'text',
-    //     '#homecolor':      'text',
-    //     '#homegamesWon':   'text',
-    //     '#homescore':      'text',
-    //     '#awayname':       'text',
-    //     '#awaylogo':       'text',
-    //     '#awaycolor':      'text',
-    //     '#awaygamesWon':   'text',
-    //     '#awayscore':      'text',
-    //     '#playname':       'text',
-    //     '#playtitle':      'text',
-    //     '#playsubtitle':   'text',
-    //     '#colorname':      'text',
-    //     '#colortitle':     'text',
-    //     '#colorsubtitle':  'text',
-    //     '#fieldname':      'text',
-    //     '#fieldtitle':     'text',
-    //     '#fieldsubtitle':  'text'
-    //   },
+    ExpressionAttributeNames: {
+        '#timeleft':            'time',
+      },
     ExpressionAttributeValues: {
       ':period': data.period,
       ':timeleft': data.time,
@@ -62,7 +42,7 @@ module.exports.update = (event, context, callback) => {
       ':fieldsubtitle': data.fieldReporter.subtitle,
       ':updated': timestamp
     },
-    UpdateExpression: "set period=:period, time=:timeleft, " +
+    UpdateExpression: "set period=:period, #timeleft=:timeleft, " +
       "homeTeam.name=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
       "awayTeam.name=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
       "playByplayname=:playname, playByplaytitle=:playtitle, playByplaysubtitle=:playsubtitle, " +
