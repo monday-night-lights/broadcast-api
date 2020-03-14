@@ -16,13 +16,13 @@ module.exports.update = (event, context, callback) => {
       id: event.pathParameters.id,
     },
     ExpressionAttributeNames: {
-        '#timeleft':            'time',
-        '#homeTeamName':        'homeTeam.name',
-        '#awayTeamName':        'awayTeam.name',
-        '#playByPlayName':      'playByPlay.name',
-        '#colorCommentaryName': 'colorCommentary.name',
-        '#fieldReporterName':   'fieldReporter.name'
-      },
+      '#timeleft': 'time',
+      '#homeTeamName': 'homeTeam.name',
+      '#awayTeamName': 'awayTeam.name',
+      '#playByPlayName': 'playByPlay.name',
+      '#colorCommentaryName': 'colorCommentary.name',
+      '#fieldReporterName': 'fieldReporter.name'
+    },
     ExpressionAttributeValues: {
       ':period': data.period,
       ':timeleft': data.time,
@@ -73,6 +73,10 @@ module.exports.update = (event, context, callback) => {
     const response = {
       statusCode: 200,
       body: JSON.stringify(result.Attributes),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true
+      }
     };
     callback(null, response);
   });

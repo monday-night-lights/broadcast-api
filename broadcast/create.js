@@ -9,7 +9,7 @@ module.exports.create = (event, context, callback) => {
     console.log(event);
 
     const data = JSON.parse(event.body);
-    const timestamp =  new Date().getTime();
+    const timestamp = new Date().getTime();
 
     data.id = uuid.v1();
     data.createdate = timestamp;
@@ -37,6 +37,10 @@ module.exports.create = (event, context, callback) => {
         const response = {
             statusCode: 200,
             body: JSON.stringify(params.Item),
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
+            }
         };
         callback(null, response);
     });
