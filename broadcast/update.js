@@ -39,35 +39,36 @@ module.exports.update = (event, context, callback) => {
     //     '#fieldsubtitle':  'text'
     //   },
     ExpressionAttributeValues: {
-        ':period': data.period,
-        ':time': data.time,
-        ':homename': data.homeTeam.name,
-        ':homelogo': data.homeTeam.logo,
-        ':homecolor': data.homeTeam.color,
-        ':homegamesWon': data.homeTeam.gamesWon,
-        ':homescore': data.homeTeam.score,
-        ':awayname': data.awayTeam.name,
-        ':awaylogo': data.awayTeam.logo,
-        ':awaycolor': data.awayTeam.color,
-        ':awaygamesWon': data.awayTeam.gamesWon,
-        ':awayscore': data.awayTeam.score,
-        ':playname': data.playByplayname,
-        ':playtitle': data.playByplaytitle,
-        ':playsubtitle': data.playByplaysubtitle,
-        ':colorname': data.colorCommentary.name,
-        ':colortitle': data.colorCommentary.title,
-        ':colorsubtitle': data.colorCommentary.subtitle,
-        ':fieldname': data.fieldReporter.name,
-        ':fieldtitle': data.fieldReporter.title,
-        ':fieldsubtitle': data.fieldReporter.subtitle
-      },
-      UpdateExpression: "set period=:period, time=:time, " +
-        "homeTeam.name=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
-        "awayTeam.name=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
-        "playByplayname=:playname, playByplaytitle=:playtitle, playByplaysubtitle=:playsubtitle, " +
-        "colorCommentary.name=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
-        "fieldReporter.name=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, "
-      ,ReturnValues: 'ALL_NEW',
+      ':period': data.period,
+      ':time': data.time,
+      ':homename': data.homeTeam.name,
+      ':homelogo': data.homeTeam.logo,
+      ':homecolor': data.homeTeam.color,
+      ':homegamesWon': data.homeTeam.gamesWon,
+      ':homescore': data.homeTeam.score,
+      ':awayname': data.awayTeam.name,
+      ':awaylogo': data.awayTeam.logo,
+      ':awaycolor': data.awayTeam.color,
+      ':awaygamesWon': data.awayTeam.gamesWon,
+      ':awayscore': data.awayTeam.score,
+      ':playname': data.playByplayname,
+      ':playtitle': data.playByplaytitle,
+      ':playsubtitle': data.playByplaysubtitle,
+      ':colorname': data.colorCommentary.name,
+      ':colortitle': data.colorCommentary.title,
+      ':colorsubtitle': data.colorCommentary.subtitle,
+      ':fieldname': data.fieldReporter.name,
+      ':fieldtitle': data.fieldReporter.title,
+      ':fieldsubtitle': data.fieldReporter.subtitle,
+      ':updated': timestamp
+    },
+    UpdateExpression: "set period=:period, time=:time, " +
+      "homeTeam.name=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
+      "awayTeam.name=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
+      "playByplayname=:playname, playByplaytitle=:playtitle, playByplaysubtitle=:playsubtitle, " +
+      "colorCommentary.name=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
+      "fieldReporter.name=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updateddate=:updated",
+    ReturnValues: 'ALL_NEW'
   };
 
   // update the todo in the database
