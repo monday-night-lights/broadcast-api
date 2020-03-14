@@ -77,21 +77,18 @@ functions:
       - http:
           path: broadcast/{id}
           method: get
-          cors: true
   update:
     handler: broadcast/update.update
     events:
       - http:
           path: broadcast/{id}
           method: put
-          cors: true  
   create:
     handler: broadcast/create.create
     events:
       - http:
           path: broadcast
-          method: post
-          cors: true          
+          method: post      
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
