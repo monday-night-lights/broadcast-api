@@ -25,7 +25,7 @@ module.exports.update = (event, context, callback) => {
     // },
     ExpressionAttributeValues: {
       ':period': data.period,
-      ':timeleft': data.time,
+      ':timeleft': data.timeLeft,
       ':homename': data.homeTeam.name,
       ':homelogo': data.homeTeam.logo,
       ':homecolor': data.homeTeam.color,
@@ -47,12 +47,12 @@ module.exports.update = (event, context, callback) => {
       ':fieldsubtitle': data.fieldReporter.subtitle,
       ':updated': timestamp
     },
-    UpdateExpression: "set period=:period, #timeleft=:timeleft, " +
-      "#homeTeamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
-      "#awayTeamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
-      "#playByPlayName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
-      "#colorCommentaryName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
-      "#fieldReporterName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updatedate=:updated",
+    UpdateExpression: "set period=:period, timeLeft=:timeleft, " +
+      "homeTeam.name=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
+      "awayTeam.name=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
+      "playByPlay.name=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
+      "colorCommentary.name=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
+      "fieldReporter.name=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updatedate=:updated",
     ReturnValues: 'ALL_NEW'
   };
 
