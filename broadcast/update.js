@@ -15,14 +15,14 @@ module.exports.update = (event, context, callback) => {
     Key: {
       id: event.pathParameters.id,
     },
-    ExpressionAttributeNames: {
-      '#timeleft': 'time',
-      '#homeTeamName': 'homeTeam.name',
-      '#awayTeamName': 'awayTeam.name',
-      '#playByPlayName': 'playByPlay.name',
-      '#colorCommentaryName': 'colorCommentary.name',
-      '#fieldReporterName': 'fieldReporter.name'
-    },
+    // ExpressionAttributeNames: {
+    //   '#timeleft': 'time',
+    //   '#homeTeamName': 'homeTeam.name',
+    //   '#awayTeamName': 'awayTeam.name',
+    //   '#playByPlayName': 'playByPlay.name',
+    //   '#colorCommentaryName': 'colorCommentary.name',
+    //   '#fieldReporterName': 'fieldReporter.name'
+    // },
     ExpressionAttributeValues: {
       ':period': data.period,
       ':timeleft': data.time,
