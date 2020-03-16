@@ -26,33 +26,33 @@ module.exports.update = (event, context, callback) => {
     ExpressionAttributeValues: {
       ':period': data.period,
       ':timeleft': data.timeLeft,
-      ':homename': data.homeTeam.name,
+      ':homename': data.homeTeam.teamName,
       ':homelogo': data.homeTeam.logo,
       ':homecolor': data.homeTeam.color,
       ':homegamesWon': data.homeTeam.gamesWon,
       ':homescore': data.homeTeam.score,
-      ':awayname': data.awayTeam.name,
+      ':awayname': data.awayTeam.teamName,
       ':awaylogo': data.awayTeam.logo,
       ':awaycolor': data.awayTeam.color,
       ':awaygamesWon': data.awayTeam.gamesWon,
       ':awayscore': data.awayTeam.score,
-      ':playname': data.playByPlay.name,
+      ':playname': data.playByPlay.announcerName,
       ':playtitle': data.playByPlay.title,
       ':playsubtitle': data.playByPlay.subtitle,
-      ':colorname': data.colorCommentary.name,
+      ':colorname': data.colorCommentary.announcerName,
       ':colortitle': data.colorCommentary.title,
       ':colorsubtitle': data.colorCommentary.subtitle,
-      ':fieldname': data.fieldReporter.name,
+      ':fieldname': data.fieldReporter.announcerName,
       ':fieldtitle': data.fieldReporter.title,
       ':fieldsubtitle': data.fieldReporter.subtitle,
       ':updated': timestamp
     },
     UpdateExpression: "set period=:period, timeLeft=:timeleft, " +
-      "homeTeam.name=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
-      "awayTeam.name=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
-      "playByPlay.name=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
-      "colorCommentary.name=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
-      "fieldReporter.name=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updatedate=:updated",
+      "homeTeam.teamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
+      "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
+      "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
+      "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
+      "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updatedate=:updated",
     ReturnValues: 'ALL_NEW'
   };
 
