@@ -26,33 +26,20 @@ module.exports.update = (event, context, callback) => {
     ExpressionAttributeValues: {
       ':period': data.period,
       ':timeleft': data.timeLeft,
-      ':homename': data.homeTeam.teamName,
-      ':homelogo': data.homeTeam.logo,
-      ':homecolor': data.homeTeam.color,
-      ':homegamesWon': data.homeTeam.gamesWon,
-      ':homescore': data.homeTeam.score,
-      ':awayname': data.awayTeam.teamName,
-      ':awaylogo': data.awayTeam.logo,
-      ':awaycolor': data.awayTeam.color,
-      ':awaygamesWon': data.awayTeam.gamesWon,
-      ':awayscore': data.awayTeam.score,
-      ':playname': data.playByPlay.announcerName,
-      ':playtitle': data.playByPlay.title,
-      ':playsubtitle': data.playByPlay.subtitle,
-      ':colorname': data.colorCommentary.announcerName,
-      ':colortitle': data.colorCommentary.title,
-      ':colorsubtitle': data.colorCommentary.subtitle,
-      ':fieldname': data.fieldReporter.announcerName,
-      ':fieldtitle': data.fieldReporter.title,
-      ':fieldsubtitle': data.fieldReporter.subtitle,
+      ':hometeam': data.homeTeam,
+      ':awayTeam': data.awayTeam,
+      ':playByPlay': data.playByPlay,
+      ':colorCommentary': data.colorCommentary,
+      ':fieldReporter': data.fieldReporter,
       ':updated': timestamp
     },
     UpdateExpression: "set period=:period, timeLeft=:timeleft, " +
-      "homeTeam.teamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
-      "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
-      "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
-      "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
-      "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updatedate=:updated",
+      "homeTeam=:homeTeam, " +
+      "awayTeame=:awayTeam, " +
+      "playByPlay=:playByPlay, " +
+      "colorCommentary=:colorCommentary, " +
+      "fieldReporter=:fieldReporter, " +
+      "updatedate=:updated",
     ReturnValues: 'ALL_NEW'
   };
 
