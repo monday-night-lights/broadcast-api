@@ -15,17 +15,9 @@ module.exports.update = (event, context, callback) => {
     Key: {
       id: event.pathParameters.id,
     },
-    // ExpressionAttributeNames: {
-    //   '#timeleft': 'time',
-    //   '#homeTeamName': 'homeTeam.name',
-    //   '#awayTeamName': 'awayTeam.name',
-    //   '#playByPlayName': 'playByPlay.name',
-    //   '#colorCommentaryName': 'colorCommentary.name',
-    //   '#fieldReporterName': 'fieldReporter.name'
-    // },
     ExpressionAttributeValues: {
       ':period': data.period,
-      ':timeleft': data.timeLeft,
+      // ':timeleft': data.timeLeft,
       ':homename': data.homeTeam.teamName,
       ':homelogo': data.homeTeam.logo,
       ':homecolor': data.homeTeam.color,
@@ -47,7 +39,8 @@ module.exports.update = (event, context, callback) => {
       ':fieldsubtitle': data.fieldReporter.subtitle,
       ':updated': timestamp
     },
-    UpdateExpression: "set period=:period, timeLeft=:timeleft, " +
+    UpdateExpression: "set period=:period, " +
+      //"timeLeft=:timeleft, " +
       "homeTeam.teamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
       "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
       "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
