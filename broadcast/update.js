@@ -17,7 +17,6 @@ module.exports.update = (event, context, callback) => {
     },
     ExpressionAttributeValues: {
       ':period': data.period,
-      // ':timeleft': data.timeLeft,
       ':homename': data.homeTeam.teamName,
       ':homelogo': data.homeTeam.logo,
       ':homecolor': data.homeTeam.color,
@@ -37,6 +36,9 @@ module.exports.update = (event, context, callback) => {
       ':fieldname': data.fieldReporter.announcerName,
       ':fieldtitle': data.fieldReporter.title,
       ':fieldsubtitle': data.fieldReporter.subtitle,
+      ':playername': data.player.announcerName,
+      ':playertitle': data.player.title,
+      ':playersubtitle': data.player.subtitle,
       ':updated': timestamp
     },
     UpdateExpression: "set period=:period, " +
@@ -45,7 +47,9 @@ module.exports.update = (event, context, callback) => {
       "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
       "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
       "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
-      "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, updatedate=:updated",
+      "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, " + 
+      "player.announcerName=:playername, player.title=:playertitle, player.subtitle=:playersubtitle, " +
+      "updatedate=:updated", 
     ReturnValues: 'ALL_NEW'
   };
 
