@@ -91,7 +91,14 @@ functions:
       - http:
           path: broadcast
           method: post
-          cors: true          
+          cors: true
+  updateScore:
+    handler: cast-game/update.update
+    events:
+      - http:
+          path: cast-game
+          method: put
+          cors: true        
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
