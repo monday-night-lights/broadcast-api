@@ -16,30 +16,15 @@ module.exports.update = (event, context, callback) => {
       id: event.pathParameters.id,
     },
     ExpressionAttributeValues: {
-      ':hostCasterName':    data.host.casterName,
-      ':hostTitle':         data.host.title,
-      ':hostPoints':        data.host.points,
-      ':caster1CasterName': data.caster1.casterName,
-      ':caster1Title':      data.caster1.title,
-      ':caster1Points':     data.caster1.points,
-      ':caster2CasterName': data.caster2.casterName,
-      ':caster2Title':      data.caster2.title,
-      ':caster2Points':     data.caster2.points,
-      ':caster3CasterName': data.caster3.casterName,
-      ':caster3Title':      data.caster3.title,
-      ':caster3Points':     data.caster3.points,
-      ':caster4CasterName': data.caster4.casterName,
-      ':caster4Title':      data.caster4.title,
-      ':caster4Points':     data.caster4.points,
+      ':castPoints': data.castPoints,
       ':updated': timestamp
     },
     UpdateExpression: "set " +
-     "host.casterName=:hostCasterName, host.title=:hostTitle, host.points=:hostPoints, " +
-     "caster1.casterName=:caster1CasterName, caster1.title=:caster1Title, caster1.points=:caster1Points, " +
-     "caster2.casterName=:caster2CasterName, caster2.title=:caster2Title, caster2.points=:caster2Points, " +
-     "caster3.casterName=:caster3CasterName, caster3.title=:caster3Title, caster3.points=:caster3Points, " +
-     "caster4.casterName=:caster4CasterName, caster4.title=:caster4Title, caster4.points=:caster4Points, " +
-      "updatedate=:updated", 
+      "castPoints = list_append(castPoints, :castPoints) " +
+      "updatedate=:updated",
+    ExpressionAttributeNames: {
+      '#castPoints': 'castPoints'
+    },
     ReturnValues: 'ALL_NEW'
   };
 
