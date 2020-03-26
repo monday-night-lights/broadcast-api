@@ -92,7 +92,7 @@ functions:
           path: broadcast
           method: post
           cors: true
-  updateScore:
+  castgame:
     handler: cast-game/update.update
     events:
       - http:
