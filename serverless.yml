@@ -93,10 +93,10 @@ functions:
           method: post
           cors: true
   castgame:
-    handler: cast-game/update.update/{id}
+    handler: cast-game/update.update
     events:
       - http:
-          path: cast-game
+          path: cast-game/{id}
           method: put
           cors: true        
 #      - websocket: $connect
