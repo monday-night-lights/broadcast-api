@@ -16,15 +16,12 @@ module.exports.update = (event, context, callback) => {
       id: event.pathParameters.id,
     },
     ExpressionAttributeValues: {
-      ':castPoints': data.castPoints,
+      ':castPoints': DynamoDb.createSet(data.castPoints),
       ':updated': timestamp
     },
     UpdateExpression: "set " +
-      "castPoints = list_append(castPoints, :castPoints), " +
+      "castPoints = :castPoints, " +
       "updatedate=:updated",
-    ExpressionAttributeNames: {
-      '#castPoints': 'castPoints'
-    },
     ReturnValues: 'ALL_NEW'
   };
 
