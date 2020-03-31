@@ -16,14 +16,15 @@ module.exports.update = (event, context, callback) => {
       id: event.pathParameters.id,
     },
     ExpressionAttributeValues: {
-      ':castPoints': data.castPoints ,
+      ':castPoints': data.castPoints,
+      ":empty_list": [], 
       ':updated': timestamp
     },
     ExpressionAttributeNames : {
       "#points" : "castPoints"
     },
     UpdateExpression: "set " +
-      "#points = list_append(#points, :castPoints), " +
+      "#points = list_append(if_not_exists(#points, :empty_list), :castPoints), " +
       "updatedate=:updated",
     ReturnValues: 'ALL_NEW'
   };
