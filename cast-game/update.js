@@ -24,7 +24,7 @@ module.exports.update = (event, context, callback) => {
       "#points" : "castPoints"
     },
     UpdateExpression: "set " +
-      "#points = list_append(if_not_exists(#points, :empty_list), :castPoints), " +
+      "#points = list_append(:empty_list, :castPoints), " +
       "updatedate=:updated",
     ReturnValues: 'ALL_NEW'
   };
