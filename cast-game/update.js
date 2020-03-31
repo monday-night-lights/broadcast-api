@@ -20,7 +20,7 @@ module.exports.update = (event, context, callback) => {
       ':updated': timestamp
     },
     UpdateExpression: "set " +
-      "castPoints = list_append(castPoints, :castPoints) " +
+      "castPoints = list_append(castPoints, :castPoints), " +
       "updatedate=:updated",
     ExpressionAttributeNames: {
       '#castPoints': 'castPoints'
