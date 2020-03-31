@@ -20,8 +20,11 @@ module.exports.update = (event, context, callback) => {
       ":empty_list": { "L": [] },
       ':updated': timestamp
     },
+    ExpressionAttributeNames : {
+      "#points" : "castPoints"
+    },
     UpdateExpression: "set " +
-      "castPoints = list_append(if_not_exists(castPoints, :empty_list), :castPoints), " +
+      "#points = list_append(if_not_exists(#points, :empty_list), :castPoints), " +
       "updatedate=:updated",
     ReturnValues: 'ALL_NEW'
   };
