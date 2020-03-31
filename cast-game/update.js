@@ -16,7 +16,7 @@ module.exports.update = (event, context, callback) => {
       id: event.pathParameters.id,
     },
     ExpressionAttributeValues: {
-      ':castPoints': { "L": data.castPoints },
+      ':castPoints': data.castPoints ,
       ':updated': timestamp
     },
     ExpressionAttributeNames : {
