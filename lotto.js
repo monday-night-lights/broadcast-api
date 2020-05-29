@@ -9,8 +9,10 @@ module.exports.update = (event, context, callback) => {
   const timestamp = new Date().getTime();
   const ball = JSON.parse(event.body);
 
+  const params;
+
   if (ball === null) {
-    const params = {
+    params = {
       TableName: process.env.DYNAMODB_TABLE,
       Key: { id: event.pathParameters.id },
       ReturnValues: 'ALL_NEW',
@@ -26,7 +28,7 @@ module.exports.update = (event, context, callback) => {
   else {
     ball.time = timestamp;
 
-    const params = {
+    params = {
       TableName: process.env.DYNAMODB_TABLE,
       Key: { id: event.pathParameters.id },
       ReturnValues: 'ALL_NEW',
