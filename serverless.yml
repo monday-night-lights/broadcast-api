@@ -98,7 +98,21 @@ functions:
       - http:
           path: cast-game/{id}
           method: put
-          cors: true        
+          cors: true
+  lotto-get:
+    handler: lotto.get
+    events:
+      - http:
+          path: lotto/{id}
+          method: get
+          cors: true
+  lotto-update:
+    handler: lotto.update
+    events:
+      - http:
+          path: lotto/{id}
+          method: put
+          cors: true
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
