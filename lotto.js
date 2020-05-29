@@ -8,21 +8,40 @@ module.exports.update = (event, context, callback) => {
 
   const timestamp = new Date().getTime();
   const ball = JSON.parse(event.body);
-  ball.time = timestamp;
 
-  const params = {
-    TableName: process.env.DYNAMODB_TABLE,
-    Key: { id:  event.pathParameters.id },
-    ReturnValues: 'ALL_NEW',
-    UpdateExpression: 'set #lottoBalls = list_append(if_not_exists(#lottoBalls, :empty_list), :team)',
-    ExpressionAttributeNames: {
-      '#lottoBalls': 'lottoBalls'
-    },
-    ExpressionAttributeValues: {
-      ':team': [ball],
-      ':empty_list': []
-    }
-  };
+  const params;
+
+  if (ball === null) {
+    params = {
+      TableName: process.env.DYNAMODB_TABLE,
+      Key: { id: event.pathParameters.id },
+      ReturnValues: 'ALL_NEW',
+      UpdateExpression: 'set #lottoBalls = :empty_list',
+      ExpressionAttributeNames: {
+        '#lottoBalls': 'lottoBalls'
+      },
+      ExpressionAttributeValues: {
+        ':empty_list': []
+      }
+    };
+  }
+  else {
+    ball.time = timestamp;
+
+    params = {
+      TableName: process.env.DYNAMODB_TABLE,
+      Key: { id: event.pathParameters.id },
+      ReturnValues: 'ALL_NEW',
+      UpdateExpression: 'set #lottoBalls = list_append(if_not_exists(#lottoBalls, :empty_list), :team)',
+      ExpressionAttributeNames: {
+        '#lottoBalls': 'lottoBalls'
+      },
+      ExpressionAttributeValues: {
+        ':team': [ball],
+        ':empty_list': []
+      }
+    };
+  }
 
   dynamoDb.update(params, (error, result) => {
     // handle potential errors
