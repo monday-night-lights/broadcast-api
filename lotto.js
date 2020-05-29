@@ -9,7 +9,7 @@ module.exports.update = (event, context, callback) => {
   const timestamp = new Date().getTime();
   const ball = JSON.parse(event.body);
 
-  const params;
+  var params;
 
   if (ball === null) {
     params = {
