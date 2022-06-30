@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "serverless-offline": "^8.8.0",
+    "slspress": "^2.2.5",
     "uuid": "^7.0.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
