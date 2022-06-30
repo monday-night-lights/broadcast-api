@@ -113,6 +113,20 @@ functions:
           path: lotto/{id}
           method: put
           cors: true
+  draft-get:
+    handler: draft.get
+    events:
+      - http:
+          path: draft/{id}
+          method: get
+          cors: true
+  draft-update:
+    handler: draft.update
+    events:
+      - http:
+          path: draft/{id}
+          method: put
+          cors: true
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
