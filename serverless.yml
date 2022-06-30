@@ -24,7 +24,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs
+  runtime: nodejs16.x
   region: us-east-2
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
