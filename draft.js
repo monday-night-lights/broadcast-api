@@ -6,7 +6,6 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 module.exports.update = (event, context, callback) => {
   console.log(event);
 
-  const timestamp = new Date().getTime();
   const pick = JSON.parse(event.body);
 
   var params;

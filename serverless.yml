@@ -27,7 +27,7 @@ provider:
   runtime: nodejs16.x
   region: us-east-2
   environment:
-    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    DYNAMODB_TABLE: broadcast-api-dev
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -37,7 +37,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource: "arn:aws:dynamodb:dev:*:table/broadcast-api-dev"
 #  apiKeys: 
 #    - jeremy-key
 # you can add statements to the Lambda function's IAM Role here
@@ -176,4 +176,4 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:service}-${opt:stage, self:provider.stage}
+        TableName: broadcast-api-dev
