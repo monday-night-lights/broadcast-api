@@ -21,7 +21,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/node:8.12
+      - image: cimg/node:16.15.0
     steps:
       - checkout
       - run: 
