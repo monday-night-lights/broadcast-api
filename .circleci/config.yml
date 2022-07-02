@@ -33,10 +33,10 @@ jobs:
           command: yarn install
       - run:
           name: Setup AWS Profile Permissions
-          command: sls config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
+          command: serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
       - run:
           name: Deploy
-          command: sls deploy
+          command: serverless deploy
 workflows:
   version: 2
   build_and_deploy:
