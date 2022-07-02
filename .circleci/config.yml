@@ -21,13 +21,13 @@ jobs:
 
   deploy:
     docker:
-      - image: amaysim/serverless
+      - image: cimg/node:16.15.0
     steps:
       - checkout
       - run: 
           name: Install Serverless
           command: |
-            yarn global add serverless
+            sudo yarn global add serverless
       - run:
           name: Install Packages
           command: yarn install

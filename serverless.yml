@@ -24,6 +24,7 @@ plugins:
 
 provider:
   name: aws
+  deploymentMethod: direct
   runtime: nodejs16.x
   region: us-east-2
   environment:
