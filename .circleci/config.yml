@@ -21,13 +21,13 @@ jobs:
 
   deploy:
     docker:
-      - image: cimg/node
+      - image: cimg/node:16.15.0
     steps:
       - checkout
       - run: 
           name: Install Serverless
           command: |
-            sudo yarn global add serverless
+            yarn global add serverless
       - run:
           name: Install Packages
           command: yarn install
