@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "fs-extra": "^10.1.0",
     "serverless-offline": "^8.8.0",
     "slspress": "^2.2.5",
     "uuid": "^7.0.2"
