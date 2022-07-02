@@ -6,6 +6,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 module.exports.update = (event, context, callback) => {
   console.log(event);
 
+  const timestamp = new Date().getTime();
   const pick = JSON.parse(event.body);
 
   var params;
@@ -25,16 +26,18 @@ module.exports.update = (event, context, callback) => {
     };
   }
   else {
+    pick.time = timestamp;
+
     params = {
       TableName: process.env.DYNAMODB_TABLE,
       Key: { id: event.pathParameters.id },
       ReturnValues: 'ALL_NEW',
-      UpdateExpression: 'set #draftPicks = list_append(if_not_exists(#draftPicks, :empty_list), :team)',
+      UpdateExpression: 'set #draftPicks = list_append(if_not_exists(#draftPicks, :empty_list), :pick)',
       ExpressionAttributeNames: {
         '#draftPicks': 'draftPicks'
       },
       ExpressionAttributeValues: {
-        ':team': [pick],
+        ':pick': [pick],
         ':empty_list': []
       }
     };
