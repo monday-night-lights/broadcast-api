@@ -7,11 +7,11 @@ module.exports.update = (event, context, callback) => {
   console.log(event);
 
   const timestamp = new Date().getTime();
-  const pick = JSON.parse(event.body);
+  const picks = JSON.parse(event.body);
 
   var params;
 
-  if (pick === null) {
+  if (picks === null) {
     params = {
       TableName: process.env.DYNAMODB_TABLE,
       Key: { id: event.pathParameters.id },
@@ -26,19 +26,16 @@ module.exports.update = (event, context, callback) => {
     };
   }
   else {
-    pick.time = timestamp;
-
     params = {
       TableName: process.env.DYNAMODB_TABLE,
       Key: { id: event.pathParameters.id },
       ReturnValues: 'ALL_NEW',
-      UpdateExpression: 'set #draftPicks = list_append(if_not_exists(#draftPicks, :empty_list), :pick)',
+      UpdateExpression: 'set #draftPicks =:picks',
       ExpressionAttributeNames: {
         '#draftPicks': 'draftPicks'
       },
       ExpressionAttributeValues: {
-        ':pick': [pick],
-        ':empty_list': []
+        ':picks': picks
       }
     };
   }
