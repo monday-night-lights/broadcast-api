@@ -25,6 +25,7 @@ plugins:
 provider:
   name: aws
   deploymentMethod: direct
+  deploymentBucket: serverless-broadcast-api-s3
   runtime: nodejs20.x
   region: us-east-2
   environment:
