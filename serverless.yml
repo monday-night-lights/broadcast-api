@@ -25,20 +25,23 @@ plugins:
 provider:
   name: aws
   deploymentMethod: direct
-  runtime: nodejs16.x
+  deploymentBucket: serverless-broadcast-api-s3
+  runtime: nodejs20.x
   region: us-east-2
   environment:
     DYNAMODB_TABLE: broadcast-api-dev
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-        - dynamodb:Scan
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-2:*:table/broadcast-api-dev"
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:us-east-2:*:table/broadcast-api-dev"
 #  apiKeys: 
 #    - jeremy-key
 # you can add statements to the Lambda function's IAM Role here
