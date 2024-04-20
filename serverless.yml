@@ -25,7 +25,7 @@ plugins:
 provider:
   name: aws
   deploymentMethod: direct
-  runtime: nodejs16.x
+  runtime: nodejs20.x
   region: us-east-2
   environment:
     DYNAMODB_TABLE: broadcast-api-dev
