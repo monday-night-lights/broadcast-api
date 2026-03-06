@@ -30,7 +30,6 @@ module.exports.create = (event, context, callback) => {
                 headers: {
                     'Content-Type': 'text/plain',
                     'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Credentials': true,
                 }, body: 'Couldn\'t create the broadcast item.',
             });
             return;
@@ -42,7 +41,6 @@ module.exports.create = (event, context, callback) => {
             body: JSON.stringify(params.Item),
             headers: {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Credentials': true,
             }
         };
         callback(null, response);

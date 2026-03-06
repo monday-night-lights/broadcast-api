@@ -52,7 +52,6 @@ module.exports.update = (event, context, callback) => {
         headers: {
           'Content-Type': 'text/plain',
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
         },
         body: 'Couldn\'t fetch the lotto item.',
       });
@@ -64,8 +63,7 @@ module.exports.update = (event, context, callback) => {
       statusCode: 200,
       body: JSON.stringify(result.Attributes),
       headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true
+        'Access-Control-Allow-Origin': '*'
       }
     };
     callback(null, response);
@@ -92,7 +90,6 @@ module.exports.get = (event, context, callback) => {
         headers: {
           'Content-Type': 'text/plain',
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
         },
         body: 'Couldn\'t fetch the lotto item.',
       });
@@ -104,7 +101,6 @@ module.exports.get = (event, context, callback) => {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
       },
       body: JSON.stringify(result.Item),
     };

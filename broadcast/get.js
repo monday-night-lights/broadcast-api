@@ -24,7 +24,6 @@ module.exports.get = (event, context, callback) => {
         headers: {
           'Content-Type': 'text/plain',
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
         },
         body: 'Couldn\'t fetch the broadcast item.',
       });
@@ -36,7 +35,6 @@ module.exports.get = (event, context, callback) => {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
       },
       body: JSON.stringify(result.Item),
     };
