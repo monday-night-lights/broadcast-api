@@ -20,11 +20,13 @@ module.exports.update = (event, context, callback) => {
       ':homename': data.homeTeam.teamName,
       ':homelogo': data.homeTeam.logo,
       ':homecolor': data.homeTeam.color,
+      ':homeplayersonice': data.homeTeam.playersOnIce,
       ':homegamesWon': data.homeTeam.gamesWon,
       ':homescore': data.homeTeam.score,
       ':awayname': data.awayTeam.teamName,
       ':awaylogo': data.awayTeam.logo,
       ':awaycolor': data.awayTeam.color,
+      ':awayplayersonice': data.awayTeam.playersOnIce,
       ':awaygamesWon': data.awayTeam.gamesWon,
       ':awayscore': data.awayTeam.score,
       ':playname': data.playByPlay.announcerName,
@@ -43,8 +45,8 @@ module.exports.update = (event, context, callback) => {
     },
     UpdateExpression: "set period=:period, " +
       //"timeLeft=:timeleft, " +
-      "homeTeam.teamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.score=:homescore, " +
-      "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.score=:awayscore, " +
+      "homeTeam.teamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.playersOnIce=:homeplayersonice, homeTeam.score=:homescore, " +
+      "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.playersOnIce=:awayplayersonice, awayTeam.score=:awayscore, " +
       "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
       "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
       "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, " + 
