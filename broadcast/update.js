@@ -51,8 +51,8 @@ module.exports.update = (event, context, callback) => {
       //"timeLeft=:timeleft, " +
       "homeTeam.teamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.playersOnIce=:homeplayersonice, homeTeam.score=:homescore, " +
       "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.playersOnIce=:awayplayersonice, awayTeam.score=:awayscore, " +
-      "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, playByPlay.order=:playorder," +
-      "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, colorCommentary.order=:colororder," +
+      "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, playByPlay.order=:playorder, " +
+      "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, colorCommentary.order=:colororder, " +
       "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, fieldReporter.order=:fieldorder, " + 
       "player.announcerName=:playername, player.title=:playertitle, player.subtitle=:playersubtitle, player.order=:playerorder, " +
       "updatedate=:updated", 
