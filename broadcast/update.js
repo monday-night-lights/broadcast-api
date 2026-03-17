@@ -32,25 +32,29 @@ module.exports.update = (event, context, callback) => {
       ':playname': data.playByPlay.announcerName,
       ':playtitle': data.playByPlay.title,
       ':playsubtitle': data.playByPlay.subtitle,
+      ':playorder': data.playByPlay.order,
       ':colorname': data.colorCommentary.announcerName,
       ':colortitle': data.colorCommentary.title,
       ':colorsubtitle': data.colorCommentary.subtitle,
+      ':colororder': data.colorCommentary.order,
       ':fieldname': data.fieldReporter.announcerName,
       ':fieldtitle': data.fieldReporter.title,
       ':fieldsubtitle': data.fieldReporter.subtitle,
+      ':fieldorder': data.fieldReporter.order,
       ':playername': data.player.announcerName,
       ':playertitle': data.player.title,
       ':playersubtitle': data.player.subtitle,
+      ':playerorder': data.player.order,
       ':updated': timestamp
     },
     UpdateExpression: "set period=:period, " +
       //"timeLeft=:timeleft, " +
       "homeTeam.teamName=:homename, homeTeam.logo=:homelogo, homeTeam.color=:homecolor, homeTeam.gamesWon=:homegamesWon, homeTeam.playersOnIce=:homeplayersonice, homeTeam.score=:homescore, " +
       "awayTeam.teamName=:awayname, awayTeam.logo=:awaylogo, awayTeam.color=:awaycolor, awayTeam.gamesWon=:awaygamesWon, awayTeam.playersOnIce=:awayplayersonice, awayTeam.score=:awayscore, " +
-      "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, " +
-      "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, " +
-      "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, " + 
-      "player.announcerName=:playername, player.title=:playertitle, player.subtitle=:playersubtitle, " +
+      "playByPlay.announcerName=:playname, playByPlay.title=:playtitle, playByPlay.subtitle=:playsubtitle, playByPlay.order=:playorder," +
+      "colorCommentary.announcerName=:colorname, colorCommentary.title=:colortitle, colorCommentary.subtitle=:colorsubtitle, colorCommentary.order=:colororder," +
+      "fieldReporter.announcerName=:fieldname, fieldReporter.title=:fieldtitle, fieldReporter.subtitle=:fieldsubtitle, fieldReporter.order=:fieldorder, " + 
+      "player.announcerName=:playername, player.title=:playertitle, player.subtitle=:playersubtitle, player.order=:playerorder, " +
       "updatedate=:updated", 
     ReturnValues: 'ALL_NEW'
   };
